@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Crane.Configuration;
+
+var configuration = new CraneConfig();
+
+Console.WriteLine($"Loaded {configuration.ComposeFiles.Count} compose configuration entries.");

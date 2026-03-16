@@ -1,0 +1,5 @@
+services:
+  crane-test-nginx:
+    image: nginx:alpine
+    ports:
+      - "18080:80"

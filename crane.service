@@ -1,0 +1,18 @@
+[Unit]
+Description=Crane Docker Compose watcher
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/crane
+Restart=always
+RestartSec=10
+Environment=CRANE_BLOG_PATH=/var/www/html
+Environment=CRANE_MINECRAFT_PATH=/var/game_servers/minecraft
+Environment=CRANE_MEDIA_PATH=/usr/media/services
+Environment=CRANE_MEDIA_FILE_NAME=services.docker-compose.yml
+
+[Install]
+WantedBy=multi-user.target
