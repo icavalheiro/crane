@@ -6,7 +6,9 @@ You can define services through environment variables using the following syntax
 
 ```bash
 CRANE_BLOG_PATH=/var/www/html
+CRANE_BLOG_TIMER=1h
 CRANE_MINECRAFT_PATH=/var/game_servers/minecraft
+CRANE_MINECRAFT_TIMER=30m
 CRANE_MEDIA_PATH=/usr/media/services
 CRANE_MEDIA_FILE_NAME=services.docker-compose.yml
 ```
@@ -15,7 +17,16 @@ Rules:
 
 - `CRANE_{SERVICE}_PATH` is required for each configured service
 - `CRANE_{SERVICE}_FILE_NAME` is optional
+- `CRANE_{SERVICE}_TIMER` is optional (default is `5m`)
 - `{SERVICE}` is the service identifier used to pair the variables for the same compose project
+
+Timer examples accepted by `CRANE_{SERVICE}_TIMER`:
+
+- `30s`
+- `5m`
+- `5 minutes`
+- `1h`
+- `2d`
 
 Example systemd service:
 
@@ -32,7 +43,9 @@ ExecStart=/usr/bin/crane
 Restart=always
 RestartSec=10
 Environment=CRANE_BLOG_PATH=/var/www/html
+Environment=CRANE_BLOG_TIMER=1h
 Environment=CRANE_MINECRAFT_PATH=/var/game_servers/minecraft
+Environment=CRANE_MINECRAFT_TIMER=30m
 Environment=CRANE_MEDIA_PATH=/usr/media/services
 Environment=CRANE_MEDIA_FILE_NAME=services.docker-compose.yml
 
