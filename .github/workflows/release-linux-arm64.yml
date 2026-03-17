@@ -35,7 +35,7 @@ jobs:
           CC: aarch64-linux-gnu-gcc
           CXX: aarch64-linux-gnu-g++
         run: |
-          dotnet publish src/Crane/Crane.csproj -c Release -r linux-arm64 --self-contained true /p:PublishSingleFile=true -o artifacts/linux-arm64
+          dotnet publish src/Crane/Crane.csproj -c Release -r linux-arm64 --self-contained true /p:PublishSingleFile=true /p:StripSymbols=false -o artifacts/linux-arm64
           cp artifacts/linux-arm64/Crane artifacts/crane-linux-arm64
           chmod +x artifacts/crane-linux-arm64
 
